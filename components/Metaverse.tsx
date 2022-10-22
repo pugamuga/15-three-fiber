@@ -17,7 +17,9 @@ export default function Metaverse(): JSX.Element {
     <>
       <CameraOrbitController />
       <ambientLight intensity={0.1} />
-      <directionalLight color={"red"} position={[0, 0, 5]} />
+      <directionalLight color={"violet"} position={[0, 0, 5]} />
+      <axesHelper args={[-10]} />
+      <axesHelper args={[10]} />
       <mesh ref={boxRef} scale={[2, 1, 1]}>
         <boxGeometry />
         <meshStandardMaterial />
