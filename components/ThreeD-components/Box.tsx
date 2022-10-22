@@ -9,7 +9,7 @@ export default function Box(): JSX.Element {
       <mesh>
         <boxGeometry args={[1, 1, 1]} />
 
-        <meshStandardMaterial color={"hotpink"} />
+        <meshStandardMaterial color={"rgba(35,15,63)"} />
       </mesh>
     </>
   );

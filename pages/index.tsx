@@ -21,7 +21,7 @@ const Home: NextPage = (): JSX.Element => {
       <div className=" absolute top-5 z-10">
         <h1 className="font-extrabold bg-white ">Canvas 3D</h1>
       </div>
-      <div className=" w-96 h-96 bg-violet-500/10 border border-black rounded-full">
+      <div className=" w-96 h-96 bg-violet-500/10 border border-black rounded-full ">
         <Canvas>
           <ambientLight />
           <CameraOrbitController />
