@@ -2,7 +2,7 @@ export default function Box(): JSX.Element {
   return (
     <>
       <mesh>
-        <sphereGeometry args={[.65, 32, 16]} />
+        <sphereGeometry args={[.65, 64, 32]} />
 
         <meshStandardMaterial color={"hotpink"} />
       </mesh>

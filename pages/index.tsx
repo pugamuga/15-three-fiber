@@ -1,36 +1,23 @@
 import { Canvas, useThree } from "@react-three/fiber";
 import type { NextPage } from "next";
-import Box from "../components/ThreeD-components/Box";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { useEffect } from "react";
-
-const CameraOrbitController = () => {
-  const { camera, gl } = useThree();
-  useEffect(() => {
-    const controls = new OrbitControls(camera, gl.domElement);
-    return () => {
-      controls.dispose();
-    };
-  }, [camera, gl]);
-  return null;
-};
+import { useState } from "react";
+import MainThree from "../components/MainThree";
+import Metaverse from "../components/Metaverse";
 
 const Home: NextPage = (): JSX.Element => {
+  const [hidden, setHidden] = useState(false);
+
   return (
     <div className=" superflex h-screen">
-      <div className=" absolute top-5 z-10">
-        <h1 className="font-extrabold bg-white ">Canvas 3D</h1>
+      <div
+        onClick={() => {
+          setHidden((prev) => !prev);
+        }}
+        className="absolute z-10 top-10 left-10 p-3 border rounded-md select-none cursor-pointer tr-500 text-black bg-white hover:text-white hover:bg-black"
+      >
+        <p>{hidden ? "To process" : "Back to main"}</p>
       </div>
-      <div className=" w-96 h-96 bg-violet-500/10 border border-black rounded-full ">
-        <Canvas>
-          <ambientLight />
-          <CameraOrbitController />
-          <pointLight position={[5, 5, 5]} />
-          <axesHelper args={[-10]} />
-          <axesHelper args={[10]} />
-          <Box />
-        </Canvas>
-      </div>
+      <Canvas>{hidden ? <MainThree /> : <Metaverse />}</Canvas>
     </div>
   );
 };
