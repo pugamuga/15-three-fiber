@@ -9,6 +9,6 @@ added:
 - framer motion
 
 - fonts
-  --for adding fonts add url in global.css and add name of font in tailwnpm run dev
+  --for adding fonts add url in global.css and add name of font in tailwind.config
   
 - recoil, in recoilState
