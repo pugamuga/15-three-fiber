@@ -1,3 +1,4 @@
+import { PerspectiveCamera } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
 import type { NextPage } from "next";
 import { useState } from "react";
@@ -17,7 +18,10 @@ const Home: NextPage = (): JSX.Element => {
       >
         <p>{hidden ? "To process" : "Back to main"}</p>
       </div>
-      <Canvas>{hidden ? <MainThree /> : <Metaverse />}</Canvas>
+      <Canvas>
+        <PerspectiveCamera makeDefault position={[0,0,5]}/>
+        {hidden ? <MainThree /> : <Metaverse />}
+      </Canvas>
     </div>
   );
 };

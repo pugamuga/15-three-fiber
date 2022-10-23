@@ -1,9 +1,17 @@
+import { useHelper } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { CameraOrbitController } from "../utils/CameraOrbitController";
+import { BoxHelper } from "three";
+import { OrbitControls, Stats } from "@react-three/drei";
+import Sphere from "./Sphere";
 
 export default function Metaverse(): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
+  const testing = true;
+
+  if (testing) {
+    useHelper(boxRef, BoxHelper, "hotpink");
+  }
 
   useFrame(() => {
     if (boxRef.current !== null) {
@@ -15,15 +23,25 @@ export default function Metaverse(): JSX.Element {
 
   return (
     <>
-      <CameraOrbitController />
-      <ambientLight intensity={0.1} />
-      <directionalLight color={"violet"} position={[0, 0, 5]} />
-      <axesHelper args={[-10]} />
-      <axesHelper args={[10]} />
-      <mesh ref={boxRef} scale={[2, 1, 1]}>
+      {/* <CameraOrbitController /> */}
+      {testing && (
+        <>
+          <Stats />
+          <axesHelper args={[-10]} />
+          <axesHelper args={[10]} />
+          <gridHelper args={[10, 10]} />
+        </>
+      )}
+      <OrbitControls />
+      <ambientLight intensity={0.3} />
+      <directionalLight  position={[0, 5, 5]} />
+      {/* <mesh visible={true} ref={boxRef} scale={[1, 1, 1]} position={[0,0,0]}>
         <boxGeometry />
-        <meshStandardMaterial />
-      </mesh>
+        <meshStandardMaterial wireframe/>
+      </mesh> */}
+      <Sphere scale={0.8} position={[-2, 0, 0]} />
+      <Sphere scale={0.8} position={[0, 0, 0]} />
+      <Sphere scale={0.8} position={[2, 0, 0]} />
     </>
   );
 }
