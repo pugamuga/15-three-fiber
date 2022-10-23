@@ -5,28 +5,36 @@ interface Iprops {
   scale: number;
   position: Vector3;
   number: 1 | 2 | 3;
+  texture: "wood" | "rock" | "stone";
 }
 
 export default function Sphere({
   scale,
   position,
   number,
+  texture,
 }: Iprops): JSX.Element {
-  const mapPicture = useTexture(
-    "./textures/stoneTexture/stone_wall_diff_1k.png"
-  );
-  const mapDisplasement = useTexture(
-    "./textures/stoneTexture/stone_wall_diff_1k.png"
-  );
-  const mapNormal = useTexture(
-    "./textures/stoneTexture/stone_wall_diff_1k.png"
-  );
-  const mapRoughness = useTexture(
-    "./textures/stoneTexture/stone_wall_diff_1k.png"
-  );
+  texture;
+
+  let texturePath;
+
+  if (texture === "stone") {
+    texturePath = "./textures/stoneTexture/stone_wall";
+  }
+  if (texture === "rock") {
+    texturePath = "./textures/rockTexture/slab_tiles";
+  }
+  if (texture === "wood") {
+    texturePath = "./textures/woodTexture/wood_table_001";
+  }
+
+  const mapPicture = useTexture(`${texturePath}_diff_1k.png`);
+  const mapDisplasement = useTexture(`${texturePath}_disp_1k.png`);
+  const mapNormal = useTexture(`${texturePath}_nor_gl_1k.png`);
+  const mapRoughness = useTexture(`${texturePath}_rough_1k.png`);
   return (
     <mesh scale={[scale, scale, scale]} position={position}>
-      {number === 3 && <sphereGeometry args={[1, 1000, 1000]} />}
+      {number === 3 && <sphereGeometry args={[1, 100, 100]} />}
       {number !== 3 && <sphereGeometry args={[1, 20, 20]} />}
       {number === 1 && <meshStandardMaterial map={mapPicture} />}
       {number === 2 && (

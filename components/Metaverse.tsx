@@ -33,15 +33,19 @@ export default function Metaverse(): JSX.Element {
         </>
       )}
       <OrbitControls />
-      <ambientLight intensity={0.3} />
-      <directionalLight  position={[0, 5, 5]} />
+      <ambientLight intensity={0.5} />
+      <directionalLight  position={[0, 10, 10]} />
       {/* <mesh visible={true} ref={boxRef} scale={[1, 1, 1]} position={[0,0,0]}>
         <boxGeometry />
         <meshStandardMaterial wireframe/>
       </mesh> */}
-      <Sphere number={1} scale={0.8} position={[-2, 0, 0]} />
-      <Sphere number={2} scale={0.8} position={[0, 0, 0]} />
-      <Sphere number={3} scale={0.8} position={[2, 0, 0]} />
+      {/* <Sphere number={1} scale={0.8} position={[-2, 0, 0]} /> */}
+      <Sphere number={2} scale={0.5} position={[0, 1, 0]} texture={"wood"}/>
+      {/* <Sphere number={3} scale={0.8} position={[2, 0, 0]} texture={"rock"}/> */}
+      <mesh rotation-x={Math.PI*-1/2}>
+        <planeBufferGeometry args={[5,5]}/>
+        <meshStandardMaterial color={"#230f3f"}/>
+      </mesh>
     </>
   );
 }
