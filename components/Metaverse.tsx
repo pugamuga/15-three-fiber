@@ -39,9 +39,9 @@ export default function Metaverse(): JSX.Element {
         <boxGeometry />
         <meshStandardMaterial wireframe/>
       </mesh> */}
-      <Sphere scale={0.8} position={[-2, 0, 0]} />
-      <Sphere scale={0.8} position={[0, 0, 0]} />
-      <Sphere scale={0.8} position={[2, 0, 0]} />
+      <Sphere number={1} scale={0.8} position={[-2, 0, 0]} />
+      <Sphere number={2} scale={0.8} position={[0, 0, 0]} />
+      <Sphere number={3} scale={0.8} position={[2, 0, 0]} />
     </>
   );
 }
