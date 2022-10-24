@@ -5,7 +5,7 @@ import { DirectionalLightHelper } from "three";
 export default function Light(): JSX.Element | null {
   const lightRef = useRef<THREE.DirectionalLight>(null)
 
-  useHelper(lightRef, DirectionalLightHelper, 5, "red")
+  // useHelper(lightRef, DirectionalLightHelper, 5, "red")
   
   return (
     <>

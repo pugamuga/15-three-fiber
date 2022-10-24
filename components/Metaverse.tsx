@@ -41,7 +41,7 @@ export default function Metaverse(): JSX.Element {
           <gridHelper args={[10, 10]} />
         </>
       )}
-      <Environment map={hdriReflection} background/>
+      <Environment map={hdriReflection} background={true}/>
       <OrbitControls />
       <Light/>
       {/* <mesh visible={true} ref={boxRef} scale={[1, 1, 1]} position={[0,0,0]}>
@@ -51,10 +51,10 @@ export default function Metaverse(): JSX.Element {
       {/* <Sphere number={1} scale={0.8} position={[-2, 0, 0]} /> */}
       {/* <Sphere number={2} scale={0.5} position={[0, 1, 0]} texture={"metal"}/> */}
       {/* <Sphere number={3} scale={0.8} position={[2, 0, 0]} texture={"rock"}/> */}
-      {/* <Tree/> */}
+      <Tree/>
       <Skull/>
       {/* <SphereReflection/> */}
-     {/* <Ground color={"#41ab53"}/> */}
+     <Ground color={"#41ab53"}/>
     </>
   );
 }
