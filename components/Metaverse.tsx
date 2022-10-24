@@ -12,7 +12,7 @@ import SphereReflection from "./ThreeD-components/SphereReflection";
 
 export default function Metaverse(): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
-  const testing = true;
+  const testing = false;
 
   if (testing) {
     useHelper(boxRef, BoxHelper, "hotpink");
@@ -41,7 +41,7 @@ export default function Metaverse(): JSX.Element {
           <gridHelper args={[10, 10]} />
         </>
       )}
-      <Environment map={hdriReflection}/>
+      <Environment map={hdriReflection} background/>
       <OrbitControls />
       <Light/>
       {/* <mesh visible={true} ref={boxRef} scale={[1, 1, 1]} position={[0,0,0]}>
@@ -54,7 +54,7 @@ export default function Metaverse(): JSX.Element {
       {/* <Tree/> */}
       <Skull/>
       {/* <SphereReflection/> */}
-     <Ground color={"#41ab53"}/>
+     {/* <Ground color={"#41ab53"}/> */}
     </>
   );
 }

@@ -11,7 +11,7 @@ const hdriReflection = useEnvironment({files:"./hdri/golf_course_sunrise_2k.hdr"
 
   return (
     <Suspense fallback={null}>
-      <primitive object={skullModel.scene} scale={[.05,.05,.05]} position={[0,1,0]} envMap={hdriReflection}/>
+      <primitive object={skullModel.scene} scale={[.05,.05,.05]} position={[0,0,0]} />
     </Suspense>
   )
 }
