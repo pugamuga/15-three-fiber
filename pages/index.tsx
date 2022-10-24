@@ -18,7 +18,7 @@ const Home: NextPage = (): JSX.Element => {
       >
         <p>{hidden ? "To process" : "Back to main"}</p>
       </div>
-      <Canvas>
+      <Canvas shadows>
         <PerspectiveCamera makeDefault position={[0,0,5]}/>
         {hidden ? <MainThree /> : <Metaverse />}
       </Canvas>
