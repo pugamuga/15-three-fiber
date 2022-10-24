@@ -9,7 +9,7 @@ export default function Light(): JSX.Element | null {
   
   return (
     <>
-      <ambientLight intensity={0.2} />
+      <ambientLight intensity={0.3} />
       <directionalLight position={[0, 10, 10]} ref={lightRef} castShadow
       shadow-mapSize-height={5000}
       shadow-mapSize-width={5000}

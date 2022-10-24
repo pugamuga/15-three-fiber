@@ -1,4 +1,4 @@
-import { useHelper } from "@react-three/drei";
+import { Environment, useEnvironment, useHelper } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { BoxHelper } from "three";
@@ -8,6 +8,7 @@ import Light from "./Light";
 import Ground from "./Ground";
 import Tree from "./ThreeD-components/Tree";
 import Skull from "./ThreeD-components/Skull";
+import SphereReflection from "./ThreeD-components/SphereReflection";
 
 export default function Metaverse(): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
@@ -25,6 +26,10 @@ export default function Metaverse(): JSX.Element {
     }
   });
 
+  const hdriReflection = useEnvironment({
+    files: "./hdri/golf_course_sunrise_2k.hdr",
+  });
+
   return (
     <>
       {/* <CameraOrbitController /> */}
@@ -36,6 +41,7 @@ export default function Metaverse(): JSX.Element {
           <gridHelper args={[10, 10]} />
         </>
       )}
+      <Environment map={hdriReflection}/>
       <OrbitControls />
       <Light/>
       {/* <mesh visible={true} ref={boxRef} scale={[1, 1, 1]} position={[0,0,0]}>
@@ -47,6 +53,7 @@ export default function Metaverse(): JSX.Element {
       {/* <Sphere number={3} scale={0.8} position={[2, 0, 0]} texture={"rock"}/> */}
       {/* <Tree/> */}
       <Skull/>
+      {/* <SphereReflection/> */}
      <Ground color={"#41ab53"}/>
     </>
   );
