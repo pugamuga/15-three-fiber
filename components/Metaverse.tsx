@@ -7,6 +7,7 @@ import Sphere from "./Sphere";
 import Light from "./Light";
 import Ground from "./Ground";
 import Tree from "./ThreeD-components/Tree";
+import Skull from "./ThreeD-components/Skull";
 
 export default function Metaverse(): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
@@ -42,9 +43,10 @@ export default function Metaverse(): JSX.Element {
         <meshStandardMaterial wireframe/>
       </mesh> */}
       {/* <Sphere number={1} scale={0.8} position={[-2, 0, 0]} /> */}
-      <Sphere number={2} scale={0.5} position={[0, 1, 0]} texture={"metal"}/>
+      {/* <Sphere number={2} scale={0.5} position={[0, 1, 0]} texture={"metal"}/> */}
       {/* <Sphere number={3} scale={0.8} position={[2, 0, 0]} texture={"rock"}/> */}
-      <Tree/>
+      {/* <Tree/> */}
+      <Skull/>
      <Ground color={"#41ab53"}/>
     </>
   );
