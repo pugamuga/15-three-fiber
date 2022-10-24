@@ -6,10 +6,11 @@ import { OrbitControls, Stats } from "@react-three/drei";
 import Sphere from "./Sphere";
 import Light from "./Light";
 import Ground from "./Ground";
+import Tree from "./ThreeD-components/Tree";
 
 export default function Metaverse(): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
-  const testing = false;
+  const testing = true;
 
   if (testing) {
     useHelper(boxRef, BoxHelper, "hotpink");
@@ -43,6 +44,7 @@ export default function Metaverse(): JSX.Element {
       {/* <Sphere number={1} scale={0.8} position={[-2, 0, 0]} /> */}
       <Sphere number={2} scale={0.5} position={[0, 1, 0]} texture={"metal"}/>
       {/* <Sphere number={3} scale={0.8} position={[2, 0, 0]} texture={"rock"}/> */}
+      <Tree/>
      <Ground color={"#41ab53"}/>
     </>
   );

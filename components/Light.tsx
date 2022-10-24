@@ -9,8 +9,16 @@ export default function Light(): JSX.Element | null {
   
   return (
     <>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[0, 10, 10]} ref={lightRef} castShadow/>
+      <ambientLight intensity={0.2} />
+      <directionalLight position={[0, 10, 10]} ref={lightRef} castShadow
+      shadow-mapSize-height={5000}
+      shadow-mapSize-width={5000}
+      shadow-camera-left={-20}
+      shadow-camera-right={20}
+      shadow-camera-top={20}
+      shadow-camera-bottom={-20}
+      />
+      <hemisphereLight args={["blue","green",.7]}/>
     </>
   );
 }
