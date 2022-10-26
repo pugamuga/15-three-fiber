@@ -9,9 +9,11 @@ export default function ForestOfTrees(): JSX.Element {
         const randomZ = 5 - Math.round(Math.random() * 10);
 
         const randomSize = Math.random() / 10;
+
+        const randomType= Math.round(Math.random() * 2)+1
         return (
           <Tree
-         
+            treeType={randomType}
             scale={[randomSize, randomSize, randomSize]}
             position={[randomX, 0, randomZ]}
             rotation={[0, (-1 / randomX) * Math.PI, 0]}

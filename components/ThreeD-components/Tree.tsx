@@ -14,17 +14,26 @@ type GLTFResult = GLTF & {
   };
 };
 
-export default function Tree(props: JSX.IntrinsicElements["group"]) {
+type IProps = JSX.IntrinsicElements["group"] & {
+  treeType: number;
+};
+
+export default function Tree(props: IProps) {
+  const { treeType } = props;
+
   const { nodes, materials } = useGLTF(
-    "./models/high-tree-one.glb"
+    `./models/high-tree-${
+      treeType === 1 ? "one" : treeType === 2 ? "two" : "three"
+    }.glb`
   ) as unknown as GLTFResult;
+
   return (
     <group {...props} dispose={null}>
       <group position={[0, 0, 9.2]}>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.tree002.geometry}
+          geometry={nodes.tree002.geometry||nodes.tree001.geometry||nodes.tree003.geometry}
           material={materials["Material.001"]}
           material-color={"#5c340d"}
         >
