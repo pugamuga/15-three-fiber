@@ -57,8 +57,8 @@ export default function Metaverse(): JSX.Element {
       {/* <Sphere number={3} scale={0.8} position={[2, 0, 0]} texture={"rock"}/> */}
       {/* <ForestOfTrees/> */}
       {/* <Skull /> */}
-      {/* <SkullNew scale={[.1,.1,.1]}/> */}
-      <TestSphere/>
+      <SkullNew scale={[.1,.1,.1]}/>
+      {/* <TestSphere/> */}
       {/* <Sword
         scale={[0.2, 0.2, 0.2]}
         position={[-1, 3, 0]}
