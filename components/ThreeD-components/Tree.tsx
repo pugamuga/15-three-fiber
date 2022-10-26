@@ -1,19 +1,44 @@
-import { useLoader } from "@react-three/fiber";
-import { Suspense } from "react";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import * as THREE from "three";
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { GLTF } from "three-stdlib";
 
-export default function Tree(): JSX.Element {
-  const treeModel = useLoader(GLTFLoader, "./models/tree.glb");
+type GLTFResult = GLTF & {
+  nodes: {
+    tree002: THREE.Mesh;
+    leaves002: THREE.Mesh;
+  };
+  materials: {
+    ["Material.001"]: THREE.MeshStandardMaterial;
+    ["Leaves.001"]: THREE.MeshStandardMaterial;
+  };
+};
 
- treeModel.scene.traverse((obj)=>{
-    if(obj.type ==="Mesh"){
-        obj.castShadow = true
-    }
- })
-
+export default function Tree(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF(
+    "./models/high-tree-one.glb"
+  ) as unknown as GLTFResult;
   return (
-    <Suspense fallback={null}>
-      <primitive object={treeModel.scene} scale={[.1,.1,.1]} position={[2,0,0]}/>
-    </Suspense>
+    <group {...props} dispose={null}>
+      <group position={[0, 0, 9.2]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.tree002.geometry}
+          material={materials["Material.001"]}
+          material-color={"#5c340d"}
+        >
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.leaves002.geometry}
+            material={materials["Leaves.001"]}
+            material-color={"#f29111"}
+          />
+        </mesh>
+      </group>
+    </group>
   );
 }
+
+useGLTF.preload("/high-tree-one.glb");

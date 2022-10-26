@@ -19,14 +19,8 @@ type GLTFResult = GLTF & {
 export function Sword(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("./models/sword.glb") as any;
   return (
-    <group
-      {...props}
-      dispose={null}
-      scale={[0.2, 0.2, 0.2]}
-      position={[-1, 3, 0]}
-      rotation={[1/2*Math.PI,0,-Math.PI]}
-    >
-      <group position={[0, -0.02, 0.18]} >
+    <group {...props} dispose={null}>
+      <group position={[0, -0.02, 0.18]}>
         <mesh
           castShadow
           receiveShadow

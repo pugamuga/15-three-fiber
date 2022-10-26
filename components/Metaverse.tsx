@@ -10,6 +10,7 @@ import Tree from "./ThreeD-components/Tree";
 import Skull from "./ThreeD-components/Skull";
 import SphereReflection from "./ThreeD-components/SphereReflection";
 import { Sword } from "./ThreeD-components/Sword";
+import ForestOfTrees from "./ThreeD-components/ForestOfTrees";
 
 export default function Metaverse(): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
@@ -42,9 +43,9 @@ export default function Metaverse(): JSX.Element {
           <gridHelper args={[10, 10]} />
         </>
       )}
-      <Environment map={hdriReflection} background={true}/>
+      <Environment map={hdriReflection} background={true} />
       <OrbitControls />
-      <Light/>
+      <Light />
       {/* <mesh visible={true} ref={boxRef} scale={[1, 1, 1]} position={[0,0,0]}>
         <boxGeometry />
         <meshStandardMaterial wireframe/>
@@ -52,11 +53,15 @@ export default function Metaverse(): JSX.Element {
       {/* <Sphere number={1} scale={0.8} position={[-2, 0, 0]} /> */}
       {/* <Sphere number={2} scale={0.5} position={[0, 1, 0]} texture={"metal"}/> */}
       {/* <Sphere number={3} scale={0.8} position={[2, 0, 0]} texture={"rock"}/> */}
-      <Tree/>
-      <Skull/>
-      <Sword/>
+      <ForestOfTrees/>
+      <Skull />
+      <Sword
+        scale={[0.2, 0.2, 0.2]}
+        position={[-1, 3, 0]}
+        rotation={[(1 / 2) * Math.PI, 0, -Math.PI]}
+      />
       {/* <SphereReflection/> */}
-     <Ground color={"#41ab53"}/>
+      <Ground color={"#41ab53"} />
     </>
   );
 }
