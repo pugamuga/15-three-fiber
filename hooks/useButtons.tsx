@@ -13,8 +13,8 @@ interface IPropsKeys {
   KeyS: string;
   KeyA: string;
   KeyD: string;
-  leftShift: string;
-  space: string;
+  ShiftLeft: string;
+  Space: string;
 }
 
 export default function useButtons(): IProps {
@@ -32,8 +32,8 @@ export default function useButtons(): IProps {
     KeyS: "backward",
     KeyA: "left",
     KeyD: "right",
-    leftShift: "shift",
-    space: "jump",
+    ShiftLeft: "shift",
+    Space: "jump",
   };
 
   const findKey = (key: string) => {

@@ -10,7 +10,7 @@ import Undead from "./ThreeD-components/Undead";
 
 export default function Metaverse(): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
-  const testing = true;
+  const testing = false;
 
   if (testing) {
     useHelper(boxRef, BoxHelper, "hotpink");
@@ -40,7 +40,7 @@ export default function Metaverse(): JSX.Element {
         </>
       )}
       <Environment map={hdriReflection} background={false} />
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <Light />
      
       <Undead />

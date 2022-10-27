@@ -13,14 +13,14 @@ export default function Ground({ color }: IProps): JSX.Element {
   const mapRoughness = useTexture(`${texturePath}_rough_1k.png`);
 
   return (
-    <mesh rotation-x={(Math.PI * -1) / 2} receiveShadow scale={[1,1,1]} >
+    <mesh rotation-x={(Math.PI * -1) / 2} receiveShadow scale={[5,5,5]} >
       <planeBufferGeometry args={[10, 10, 128, 128]} />
       <meshStandardMaterial
         map={mapPicture}
         roughnessMap={mapRoughness}
         normalMap={mapNormal}
         displacementMap={mapDisplasement}
-        displacementScale={0.07}
+        displacementScale={0.01}
       />
     </mesh>
   );
