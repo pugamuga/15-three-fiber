@@ -13,5 +13,5 @@ export default function Undead(): JSX.Element {
     actions?.idleAnimation?.play();
   }, []);
 
-  return <primitive object={undeadModel.scene} metallness={1} />;
+  return <primitive object={undeadModel.scene} metallness={1} position={[0,0.04,0]}/>;
 }

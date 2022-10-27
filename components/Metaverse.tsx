@@ -6,11 +6,9 @@ import { OrbitControls, Stats } from "@react-three/drei";
 import Sphere from "./Sphere";
 import Light from "./Light";
 import Ground from "./Ground";
-import Tree from "./ThreeD-components/Tree";
 import Skull from "./ThreeD-components/Skull";
 import SphereReflection from "./ThreeD-components/SphereReflection";
 import { Sword } from "./ThreeD-components/Sword";
-import ForestOfTrees from "./ThreeD-components/ForestOfTrees";
 import SkullNew from "./ThreeD-components/SkullNew";
 import TestSphere from "./ThreeD-components/TestSphere";
 import StoneChar from "./ThreeD-components/StoneChar";
@@ -68,7 +66,7 @@ export default function Metaverse(): JSX.Element {
       /> */}
       {/* <SphereReflection/> */}
       {/* <StoneChar/> */}
-      <Undead/>
+      <Undead />
       <Ground color={"#41ab53"} />
     </>
   );
