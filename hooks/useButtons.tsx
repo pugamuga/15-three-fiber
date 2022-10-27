@@ -37,10 +37,19 @@ export default function useButtons(): IProps {
   };
 
   const handlerKeyDown = (e: any) => {
-    setInput((prev) => ({ ...prev, [findKey(e.code)]: true }));
+    if (e.code !== "Space") {
+      setInput((prev) => ({ ...prev, [findKey(e.code)]: true }));
+    } else if (e.code === "Space") {
+      setInput((prev) => ({ ...prev, [findKey(e.code)]: true }));
+      setTimeout(() => {
+        setInput((prev) => ({ ...prev, [findKey(e.code)]: false }));
+      }, 1000);
+    }
   };
   const handlerKeyUp = (e: any) => {
-    setInput((prev) => ({ ...prev, [findKey(e.code)]: false }));
+    if (e.code !== "Space") {
+      setInput((prev) => ({ ...prev, [findKey(e.code)]: false }));
+    }
   };
 
   useEffect(() => {

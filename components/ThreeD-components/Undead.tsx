@@ -40,6 +40,7 @@ export default function Undead(): JSX.Element {
       action = "walkingAnimation";
       if (shift) {
         action = "runAnimation";
+        
       }
       if (jump) {
         action = "jumpAnimation";
@@ -96,7 +97,8 @@ export default function Undead(): JSX.Element {
   useFrame((state, delta) => {
     if (
       currentAction.current === "runAnimation" ||
-      currentAction.current === "walkingAnimation"
+      currentAction.current === "walkingAnimation"||
+      currentAction.current === "jumpAnimation"
     ) {
       // undeadModel.scene.position.x += 0.01
       let angleYCameraDirection = Math.atan2(
@@ -121,7 +123,7 @@ export default function Undead(): JSX.Element {
       walkDirection.normalize();
       walkDirection.applyAxisAngle(rotateAngle, newDirectionalOffset);
 
-      const velocity = currentAction.current === "runAnimation" ? 5 : 2;
+      const velocity = currentAction.current === "runAnimation"? 5 : 2;
 
       const moveX = walkDirection.x * velocity * delta;
       const moveZ = walkDirection.z * velocity * delta;
@@ -136,8 +138,7 @@ export default function Undead(): JSX.Element {
   return (
     <Suspense
       fallback={<p className="text-white text-5xl absolute">Loading...</p>}
-    > 
-    
+    >
       <OrbitControls ref={controlRef} />
       <primitive
         object={undeadModel.scene}

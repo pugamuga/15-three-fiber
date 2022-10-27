@@ -82,10 +82,10 @@ export default function MobileControllers(): JSX.Element {
         </div>
         <button
           onPointerUp={() => {
-            setInput((prev) => ({ ...prev, jump: false }));
+            setInput((prev) => ({ ...prev, shift: false }));
           }}
           onPointerDown={() => {
-            setInput((prev) => ({ ...prev, jump: true }));
+            setInput((prev) => ({ ...prev, shift: true }));
           }}
           className=" bg-white/20 text-center py-1  rounded-md border-2 tr-300 hover:scale-90"
         >
