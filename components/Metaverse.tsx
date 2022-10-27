@@ -31,7 +31,7 @@ export default function Metaverse(): JSX.Element {
   });
 
   const hdriReflection = useEnvironment({
-    files: "./hdri/golf_course_sunrise_2k.hdr",
+    files: "./hdri/night.hdr",
   });
 
   return (

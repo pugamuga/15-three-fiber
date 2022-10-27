@@ -2,7 +2,6 @@ import * as THREE from "three";
 import React, { useRef, useState } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-import Eye from "./Eye";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -29,11 +28,11 @@ export default function SkullNew(props: JSX.IntrinsicElements["group"]) {
 
   const eyeTexture = useTexture("./assets/newEye.jpg");
 
-eyeTexture.rotation = 1/2
-eyeTexture.offset.y = Math.PI *1/7
-  console.log(eyeTexture)
+  eyeTexture.rotation = 1 / 2;
+  eyeTexture.offset.y = (Math.PI * 1) / 7;
+  console.log(eyeTexture);
 
-return (
+  return (
     <group {...props} dispose={null}>
       <mesh
         onClick={() => {
@@ -53,7 +52,6 @@ return (
         material-color={colorSkull}
         // material-wireframe
       />
-     <Eye scale={[9,9,9]}/>
     </group>
   );
 }
