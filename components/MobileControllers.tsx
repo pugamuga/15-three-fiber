@@ -18,11 +18,11 @@ export default function MobileControllers(): JSX.Element {
       <div className="w-1/2 h-full p-4  flex justify-center flex-col items-center">
         {/* ------UP------- */}
         <div
-          onKeyPress={() => {
-            console.log("Down");
+          onPointerUp={() => {
+            setInput((prev) => ({ ...prev, forward: false }));
           }}
-          onKeyUp={() => {
-            console.log("Up");
+          onPointerDown={() => {
+            setInput((prev) => ({ ...prev, forward: true }));
           }}
           className=" bg-white/20 text-center py-1  rounded-md border-2  superflex h-10 w-10 tr-300 hover:scale-90"
         >
@@ -31,17 +31,38 @@ export default function MobileControllers(): JSX.Element {
         {/* ------UP------- */}
         <div className=" flex w-full justify-between pt-2">
           {/* ------Left------- */}
-          <div className=" bg-white/20 text-center py-1  rounded-md border-2 h-10 w-10 superflex tr-300 hover:scale-90">
+          <div
+            onPointerUp={() => {
+                setInput((prev) => ({ ...prev, left: false }));
+              }}
+              onPointerDown={() => {
+                setInput((prev) => ({ ...prev, left: true }));
+              }}
+          className=" bg-white/20 text-center py-1  rounded-md border-2 h-10 w-10 superflex tr-300 hover:scale-90">
             <AiOutlineArrowDown className="rotate-90 " />
           </div>
           {/* ------Left------- */}
           {/* ------Down------- */}
-          <div className=" bg-white/20 text-center py-1  rounded-md border-2 h-10 w-10 superflex tr-300 hover:scale-90">
+          <div
+          onPointerUp={() => {
+            setInput((prev) => ({ ...prev, backward: false }));
+          }}
+          onPointerDown={() => {
+            setInput((prev) => ({ ...prev, backward: true }));
+          }}
+          className=" bg-white/20 text-center py-1  rounded-md border-2 h-10 w-10 superflex tr-300 hover:scale-90">
             <AiOutlineArrowDown className="" />
           </div>
           {/* ------Down------- */}
           {/* ------Right------- */}
-          <div className=" bg-white/20 text-center py-1  rounded-md border-2 h-10 w-10 superflex tr-300 hover:scale-90">
+          <div
+          onPointerUp={() => {
+            setInput((prev) => ({ ...prev, right: false }));
+          }}
+          onPointerDown={() => {
+            setInput((prev) => ({ ...prev, right: true }));
+          }}
+          className=" bg-white/20 text-center py-1  rounded-md border-2 h-10 w-10 superflex tr-300 hover:scale-90">
             <AiOutlineArrowDown className="rotate-[-90deg]" />
           </div>
           {/* ------Right------- */}
