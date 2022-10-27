@@ -17,7 +17,7 @@ export default function Undead(): JSX.Element {
     obj.castShadow = true;
   });
   const currentAction = useRef("");
-  const controlRef = useRef<typeof OrbitControls>(null);
+  const controlRef = useRef<any>("");
   const camera = useThree((state) => state.camera);
 
   const updateCameraTarger = (moveX: number, moveZ: number) => {
@@ -40,7 +40,6 @@ export default function Undead(): JSX.Element {
       action = "walkingAnimation";
       if (shift) {
         action = "runAnimation";
-        
       }
       if (jump) {
         action = "jumpAnimation";
@@ -97,7 +96,7 @@ export default function Undead(): JSX.Element {
   useFrame((state, delta) => {
     if (
       currentAction.current === "runAnimation" ||
-      currentAction.current === "walkingAnimation"||
+      currentAction.current === "walkingAnimation" ||
       currentAction.current === "jumpAnimation"
     ) {
       // undeadModel.scene.position.x += 0.01
@@ -123,7 +122,7 @@ export default function Undead(): JSX.Element {
       walkDirection.normalize();
       walkDirection.applyAxisAngle(rotateAngle, newDirectionalOffset);
 
-      const velocity = currentAction.current === "runAnimation"? 5 : 2;
+      const velocity = currentAction.current === "runAnimation" ? 5 : 2;
 
       const moveX = walkDirection.x * velocity * delta;
       const moveZ = walkDirection.z * velocity * delta;
