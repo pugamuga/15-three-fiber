@@ -26,6 +26,7 @@ export default function Skull(): JSX.Element {
         object={skullModel.scene}
         scale={[0.05, 0.05, 0.05]}
         position={[0, 1, 0]}
+        
       />
     </Suspense>
   );

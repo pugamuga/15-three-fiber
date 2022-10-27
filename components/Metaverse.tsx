@@ -13,10 +13,12 @@ import { Sword } from "./ThreeD-components/Sword";
 import ForestOfTrees from "./ThreeD-components/ForestOfTrees";
 import SkullNew from "./ThreeD-components/SkullNew";
 import TestSphere from "./ThreeD-components/TestSphere";
+import StoneChar from "./ThreeD-components/StoneChar";
+import Undead from "./ThreeD-components/Undead";
 
 export default function Metaverse(): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
-  const testing = false;
+  const testing = true;
 
   if (testing) {
     useHelper(boxRef, BoxHelper, "hotpink");
@@ -45,7 +47,7 @@ export default function Metaverse(): JSX.Element {
           <gridHelper args={[10, 10]} />
         </>
       )}
-      <Environment map={hdriReflection} background={true} />
+      <Environment map={hdriReflection} background={false} />
       <OrbitControls />
       <Light />
       {/* <mesh visible={true} ref={boxRef} scale={[1, 1, 1]} position={[0,0,0]}>
@@ -57,7 +59,7 @@ export default function Metaverse(): JSX.Element {
       {/* <Sphere number={3} scale={0.8} position={[2, 0, 0]} texture={"rock"}/> */}
       {/* <ForestOfTrees/> */}
       {/* <Skull /> */}
-      <SkullNew scale={[.1,.1,.1]}/>
+      {/* <SkullNew  boundarySize={50} count={2}/> */}
       {/* <TestSphere/> */}
       {/* <Sword
         scale={[0.2, 0.2, 0.2]}
@@ -65,6 +67,8 @@ export default function Metaverse(): JSX.Element {
         rotation={[(1 / 2) * Math.PI, 0, -Math.PI]}
       /> */}
       {/* <SphereReflection/> */}
+      {/* <StoneChar/> */}
+      <Undead/>
       <Ground color={"#41ab53"} />
     </>
   );
