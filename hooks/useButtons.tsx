@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { buttonsState } from "../recoilState/recoilState";
 
 interface IProps {
   forward: boolean;
@@ -18,14 +20,7 @@ interface IPropsKeys {
 }
 
 export default function useButtons(): IProps {
-  const [input, setInput] = useState<IProps>({
-    forward: false,
-    backward: false,
-    left: false,
-    right: false,
-    shift: false,
-    jump: false,
-  });
+  const [input, setInput] = useRecoilState<IProps>(buttonsState);
 
   const keys: IPropsKeys = {
     KeyW: "forward",
