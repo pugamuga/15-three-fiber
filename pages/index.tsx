@@ -7,21 +7,33 @@ import MainThree from "../components/MainThree";
 import Metaverse from "../components/Metaverse";
 import MobileControllers from "../components/MobileControllers";
 
-const TestLoader = () => {
+const TestLoader = ({progress}:any) => {
+
+const loaderProgress = ((126/Number(progress))*100).toFixed(0)
+
   return (
-    <div className=" absolute w-24 h-24 bg-pink-500 superflex rounded-full z-60">
-      <p className=" text-white font-extrabold font-lobster text-3xl">Loader</p>
+    <div className=" absolute flex flex-col justify-center items-center">
+      <div className="  w-24 h-24 bg-pink-500 superflex rounded-full z-60">
+        <p className=" text-white font-extrabold font-lobster text-3xl">
+          Loader
+        </p>
+      </div>
+      <div className="mt-4 h-4 w-32 border-white border">
+        <div
+        style={{width:`${loaderProgress}px`}}
+        className="h-[14px] bg-pink-500 " />
+      </div>
     </div>
   );
 };
 
 const Home: NextPage = (): JSX.Element => {
   const [hidden, setHidden] = useState(false);
-    const { progress } = useProgress();
+  const { progress } = useProgress();
 
   return (
     <div className=" superflex h-screen ">
-      {progress!==100&&<TestLoader />}
+      {progress !== 100 && <TestLoader progress={progress}/>}
       <div
         onClick={() => {
           setHidden((prev) => !prev);
