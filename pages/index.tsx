@@ -7,19 +7,21 @@ import MainThree from "../components/MainThree";
 import Metaverse from "../components/Metaverse";
 import MobileControllers from "../components/MobileControllers";
 
+const TestLoader = () => {
+  return (
+    <div className=" absolute w-24 h-24 bg-pink-500 superflex rounded-full z-60">
+      <p className=" text-white font-extrabold font-lobster text-3xl">Loader</p>
+    </div>
+  );
+};
+
 const Home: NextPage = (): JSX.Element => {
   const [hidden, setHidden] = useState(false);
-  function Loader() {
     const { progress } = useProgress();
-    return (
-      <Html className=" absolute z-50 text-white text-3xl font-extrabold w-96">
-        {progress} % loaded
-      </Html>
-    );
-  }
 
   return (
     <div className=" superflex h-screen ">
+      {progress!==100&&<TestLoader />}
       <div
         onClick={() => {
           setHidden((prev) => !prev);
@@ -30,7 +32,7 @@ const Home: NextPage = (): JSX.Element => {
       </div>
       <div className="w-[90vw] md:h-[90vh] h-[70vh] mb-24 md:mb-0 border-2 rounded-md bg-black">
         <Canvas shadows>
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={null}>
             <PerspectiveCamera makeDefault position={[0, 0, 5]} />
             {hidden ? <MainThree /> : <Metaverse />}
           </Suspense>
