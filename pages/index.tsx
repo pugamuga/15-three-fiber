@@ -1,13 +1,22 @@
 import { PerspectiveCamera } from "@react-three/drei";
+import { Html, useProgress } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
 import type { NextPage } from "next";
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import MainThree from "../components/MainThree";
 import Metaverse from "../components/Metaverse";
 import MobileControllers from "../components/MobileControllers";
 
 const Home: NextPage = (): JSX.Element => {
   const [hidden, setHidden] = useState(false);
+  function Loader() {
+    const { progress } = useProgress();
+    return (
+      <Html className=" absolute z-50 text-white text-3xl font-extrabold w-96">
+        {progress} % loaded
+      </Html>
+    );
+  }
 
   return (
     <div className=" superflex h-screen ">
@@ -19,14 +28,16 @@ const Home: NextPage = (): JSX.Element => {
       >
         <p>{hidden ? "To process" : "Back to main"}</p>
       </div>
-      <div className="w-[90vw] md:h-[90vh] h-[70vh] mb-24 md:mb-0 border-2 rounded-md bg-black"> 
+      <div className="w-[90vw] md:h-[90vh] h-[70vh] mb-24 md:mb-0 border-2 rounded-md bg-black">
         <Canvas shadows>
-          <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-          {hidden ? <MainThree /> : <Metaverse />}
+          <Suspense fallback={<Loader />}>
+            <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+            {hidden ? <MainThree /> : <Metaverse />}
+          </Suspense>
         </Canvas>
       </div>
       <div className=" absolute h-[120px] bottom-4 w-[90vw] md:hidden">
-        <MobileControllers/>
+        <MobileControllers />
       </div>
     </div>
   );

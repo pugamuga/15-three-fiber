@@ -1,16 +1,20 @@
 import { Environment, useEnvironment, useHelper } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { BoxHelper } from "three";
+import  { BoxHelper } from "three";
+import * as THREE from "three";
 import { OrbitControls, Stats } from "@react-three/drei";
 import Light from "./Light";
 import Ground from "./Ground";
 
 import Undead from "./ThreeD-components/Undead";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 export default function Metaverse(): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
   const testing = false;
+
+
 
   if (testing) {
     useHelper(boxRef, BoxHelper, "hotpink");
