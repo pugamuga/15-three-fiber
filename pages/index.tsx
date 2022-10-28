@@ -33,7 +33,7 @@ const Home: NextPage = (): JSX.Element => {
 
   return (
     <div className=" superflex h-screen ">
-      {progress !== 101 && <TestLoader progress={progress}/>}
+      {progress !== 100 && <TestLoader progress={progress}/>}
       <div
         onClick={() => {
           setHidden((prev) => !prev);
