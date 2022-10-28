@@ -9,7 +9,6 @@ import MobileControllers from "../components/MobileControllers";
 
 const TestLoader = ({progress}:any) => {
 
-const loaderProgress = ((126/Number(progress))*100).toFixed(0)
 
   return (
     <div className=" absolute flex flex-col justify-center items-center">

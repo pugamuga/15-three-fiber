@@ -6,7 +6,7 @@ import * as THREE from "three";
 import useButtons from "../../hooks/useButtons";
 
 export default function Undead(): JSX.Element {
-  const undeadModel = useGLTF("./models/undeadWithAnimGreen.glb");
+  const undeadModel = useGLTF("./models/undeadWithAnimGreenHighPoly.glb");
   const { forward, backward, left, right, shift, jump } = useButtons();
 
   const { actions } = useAnimations(undeadModel.animations, undeadModel.scene);
