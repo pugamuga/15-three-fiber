@@ -60,9 +60,16 @@ const Home: NextPage = (): any => {
     }
   }, 100);
 
+  // const badInternetInterval = setTimeout(() => {
+  //   if (progressState >= 90 && progress < 90) {
+  //     setProgressState(Number(progress.toFixed(0)));
+  //   }
+  // });
+
   if (progressState >= 100) {
     clearInterval(myInterval);
     clearInterval(mySecondInterval);
+    // clearInterval(badInternetInterval);
   }
 
   return (
@@ -82,10 +89,21 @@ const Home: NextPage = (): any => {
         <Canvas shadows>
           <Suspense fallback={null}>
             <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-            {hidden ? <MainThree /> : <Metaverse progressState={progressState}/>}
+            {hidden ? (
+              <MainThree />
+            ) : (
+              <Metaverse progressState={progressState} />
+            )}
           </Suspense>
         </Canvas>
       </div>
+      <AnimatePresence>
+        {progressState !== 100 &&<motion.div
+        initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
+          id="cover"
+          className="w-[90vw] md:h-[90vh] h-[70vh] mb-24 md:mb-0 border-2 rounded-md bg-black absolute z-10"
+        />}
+      </AnimatePresence>
       <div className=" absolute h-[120px] bottom-4 w-[90vw] md:hidden">
         <MobileControllers />
       </div>
