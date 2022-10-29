@@ -19,9 +19,9 @@ const TestLoader = ({ progress }: IProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className=" absolute flex flex-col justify-center items-center"
+      className=" absolute flex flex-col justify-center items-center z-60"
     >
-      <div className="  w-24 h-24 bg-sky-700 superflex rounded-full z-60">
+      <div className="  w-24 h-24 bg-sky-700 superflex rounded-full ">
         <p className=" text-white font-extrabold font-lobster text-3xl">
           Loader
         </p>
@@ -85,8 +85,10 @@ const Home: NextPage = (): any => {
       >
         <p>{hidden ? "To process" : "Back to main"}</p>
       </div>
-      <div className="w-[90vw] md:h-[90vh] h-[70vh]  md:mb-0 border-2 rounded-md bg-black
-             absolute z-10 transform top-1/3 -translate-y-1/3 left-1/2 -translate-x-1/2 md:top-1/2 md:-translate-y-1/2">
+      <div
+        className="w-[90vw] md:h-[90vh] h-[70vh]  md:mb-0 border-2 rounded-md bg-black
+             absolute z-10 transform top-1/3 -translate-y-1/3 left-1/2 -translate-x-1/2 md:top-1/2 md:-translate-y-1/2"
+      >
         <Canvas shadows>
           <Suspense fallback={null}>
             <PerspectiveCamera makeDefault position={[0, 0, 5]} />
