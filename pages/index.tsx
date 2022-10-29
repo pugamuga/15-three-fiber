@@ -7,8 +7,24 @@ import MainThree from "../components/MainThree";
 import Metaverse from "../components/Metaverse";
 import MobileControllers from "../components/MobileControllers";
 
-const TestLoader = ({progress}:any) => {
+interface IProps {
+  progress: number | undefined;
+}
 
+const TestLoader = ({ progress }: IProps) => {
+  const customProgress = (pr: number): number => {
+    let newProgress: number = 0;
+    if (Number(pr.toFixed(0)) > newProgress) {
+      newProgress = Number(pr.toFixed(0));
+    } else {
+      for (let i = newProgress; i < 100; i++) {
+        setTimeout(() => {
+          newProgress++;
+        }, 100);
+      }
+    }
+    return newProgress;
+  };
 
   return (
     <div className=" absolute flex flex-col justify-center items-center">
@@ -19,8 +35,9 @@ const TestLoader = ({progress}:any) => {
       </div>
       <div className="mt-4 h-4 w-32 border-white border">
         <div
-        style={{width:`${progress}%`}}
-        className="h-[14px] bg-pink-500 " />
+          style={{ width: `${customProgress(progress!)}%` }}
+          className="h-[14px] bg-pink-500 "
+        />
       </div>
     </div>
   );
@@ -32,7 +49,7 @@ const Home: NextPage = (): JSX.Element => {
 
   return (
     <div className=" superflex h-screen ">
-      {progress !== 100 && <TestLoader progress={progress}/>}
+      {progress !== 100 && <TestLoader progress={progress} />}
       <div
         onClick={() => {
           setHidden((prev) => !prev);
