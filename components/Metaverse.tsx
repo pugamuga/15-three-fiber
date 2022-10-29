@@ -10,7 +10,11 @@ import Ground from "./Ground";
 import Undead from "./ThreeD-components/Undead";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-export default function Metaverse(): JSX.Element {
+interface IProps{
+  progressState:number
+}
+
+export default function Metaverse({progressState}:IProps): JSX.Element {
   const boxRef = useRef<THREE.Mesh>(null);
   const testing = false;
 
@@ -47,7 +51,7 @@ export default function Metaverse(): JSX.Element {
       {/* <OrbitControls /> */}
       <Light />
      
-      <Undead />
+      <Undead progressState={progressState}/>
       <Ground color={"#41ab53"} />
     </>
   );

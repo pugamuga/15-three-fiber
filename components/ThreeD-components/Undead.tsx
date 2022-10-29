@@ -1,11 +1,16 @@
 import { OrbitControls, useAnimations, useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useAnimation } from "framer-motion";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import useButtons from "../../hooks/useButtons";
 
-export default function Undead(): JSX.Element {
+interface IProps {
+  progressState: number;
+}
+
+export default function Undead({ progressState }: IProps): JSX.Element {
+  const [oneTime, setOneTime] = useState(true);
   const undeadModel = useGLTF("./models/undeadWithAnimGreenHighPoly.glb");
   const { forward, backward, left, right, shift, jump } = useButtons();
 
@@ -19,6 +24,12 @@ export default function Undead(): JSX.Element {
   const currentAction = useRef("");
   const controlRef = useRef<any>("");
   const camera = useThree((state) => state.camera);
+
+  if (oneTime && (progressState===100)) {
+    console.log("oneTime");
+    camera.position.set(3, 3, 3);
+    setOneTime(false);
+  }
 
   const updateCameraTarger = (moveX: number, moveZ: number) => {
     camera.position.x += moveX;

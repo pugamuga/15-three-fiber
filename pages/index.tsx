@@ -6,50 +6,70 @@ import { Suspense, useEffect, useState } from "react";
 import MainThree from "../components/MainThree";
 import Metaverse from "../components/Metaverse";
 import MobileControllers from "../components/MobileControllers";
+import { customProgress } from "../utils/CustomProgressFunction";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface IProps {
   progress: number | undefined;
 }
 
 const TestLoader = ({ progress }: IProps) => {
-  const customProgress = (pr: number): number => {
-    let newProgress: number = 0;
-    if (Number(pr.toFixed(0)) > newProgress) {
-      newProgress = Number(pr.toFixed(0));
-    } else {
-      for (let i = newProgress; i < 100; i++) {
-        setTimeout(() => {
-          newProgress++;
-        }, 100);
-      }
-    }
-    return newProgress;
-  };
-
   return (
-    <div className=" absolute flex flex-col justify-center items-center">
-      <div className="  w-24 h-24 bg-pink-500 superflex rounded-full z-60">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className=" absolute flex flex-col justify-center items-center"
+    >
+      <div className="  w-24 h-24 bg-sky-700 superflex rounded-full z-60">
         <p className=" text-white font-extrabold font-lobster text-3xl">
           Loader
         </p>
       </div>
       <div className="mt-4 h-4 w-32 border-white border">
         <div
-          style={{ width: `${customProgress(progress!)}%` }}
-          className="h-[14px] bg-pink-500 "
+          style={{ width: `${progress}%` }}
+          className="h-[14px] bg-sky-700 "
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-const Home: NextPage = (): JSX.Element => {
+const Home: NextPage = (): any => {
   const [hidden, setHidden] = useState(false);
   const { progress } = useProgress();
+  const [progressState, setProgressState] = useState<number>(0);
+  console.log(progressState);
+
+  const myInterval = setTimeout(() => {
+    if (progress < 90) {
+      if (progress > progressState) {
+        setProgressState(Number(progress.toFixed(0)));
+      } else {
+        setProgressState(progressState + 1);
+      }
+    }
+  }, 100);
+
+  const mySecondInterval = setTimeout(() => {
+    if (progress >= 90 && progress < 100) {
+      setProgressState(progressState + 1);
+    } else if (progress === 100) {
+      setProgressState(100);
+    }
+  }, 100);
+
+  if (progressState >= 100) {
+    clearInterval(myInterval);
+    clearInterval(mySecondInterval);
+  }
 
   return (
     <div className=" superflex h-screen ">
-      {progress !== 100 && <TestLoader progress={progress} />}
+      <AnimatePresence>
+        {progressState !== 100 && <TestLoader progress={progressState} />}
+      </AnimatePresence>
       <div
         onClick={() => {
           setHidden((prev) => !prev);
@@ -62,7 +82,7 @@ const Home: NextPage = (): JSX.Element => {
         <Canvas shadows>
           <Suspense fallback={null}>
             <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-            {hidden ? <MainThree /> : <Metaverse />}
+            {hidden ? <MainThree /> : <Metaverse progressState={progressState}/>}
           </Suspense>
         </Canvas>
       </div>
