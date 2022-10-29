@@ -73,19 +73,20 @@ const Home: NextPage = (): any => {
   }
 
   return (
-    <div className=" superflex h-screen ">
+    <div className=" superflex h-screen relative">
       <AnimatePresence>
-        {progressState !== 100 && <TestLoader progress={progressState} />}
+        {progressState < 99 && <TestLoader progress={progressState} />}
       </AnimatePresence>
       <div
         onClick={() => {
           setHidden((prev) => !prev);
         }}
-        className="absolute z-10 top-8 left-8 p-3 border rounded-md select-none cursor-pointer tr-500 text-black bg-white hover:text-white hover:bg-black"
+        className="absolute z-20 top-8 left-8 p-3 border rounded-md select-none cursor-pointer tr-500 text-black bg-white hover:text-white hover:bg-black"
       >
         <p>{hidden ? "To process" : "Back to main"}</p>
       </div>
-      <div className="w-[90vw] md:h-[90vh] h-[70vh] mb-24 md:mb-0 border-2 rounded-md bg-black">
+      <div className="w-[90vw] md:h-[90vh] h-[70vh]  md:mb-0 border-2 rounded-md bg-black
+             absolute z-10 transform top-1/3 -translate-y-1/3 left-1/2 -translate-x-1/2 md:top-1/2 md:-translate-y-1/2">
         <Canvas shadows>
           <Suspense fallback={null}>
             <PerspectiveCamera makeDefault position={[0, 0, 5]} />
@@ -98,11 +99,16 @@ const Home: NextPage = (): any => {
         </Canvas>
       </div>
       <AnimatePresence>
-        {progressState !== 100 &&<motion.div
-        initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
-          id="cover"
-          className="w-[90vw] md:h-[90vh] h-[70vh] mb-24 md:mb-0 border-2 rounded-md bg-black absolute z-10"
-        />}
+        {progressState < 99 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            id="cover"
+            className="w-[90vw] md:h-[90vh] h-[70vh]  md:mb-0 border-2 rounded-md bg-black
+             absolute z-10 transform top-1/3 -translate-y-1/3 left-1/2 -translate-x-1/2 md:top-1/2 md:-translate-y-1/2"
+          />
+        )}
       </AnimatePresence>
       <div className=" absolute h-[120px] bottom-4 w-[90vw] md:hidden">
         <MobileControllers />
