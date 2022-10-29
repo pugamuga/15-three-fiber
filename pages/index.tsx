@@ -15,12 +15,7 @@ interface IProps {
 
 const TestLoader = ({ progress }: IProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className=" absolute flex flex-col justify-center items-center z-60"
-    >
+    <div className="flex flex-col justify-center items-center ">
       <div className="  w-24 h-24 bg-sky-700 superflex rounded-full ">
         <p className=" text-white font-extrabold font-lobster text-3xl">
           Loader
@@ -32,7 +27,7 @@ const TestLoader = ({ progress }: IProps) => {
           className="h-[14px] bg-sky-700 "
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -75,7 +70,16 @@ const Home: NextPage = (): any => {
   return (
     <div className=" superflex h-screen relative">
       <AnimatePresence>
-        {progressState < 99 && <TestLoader progress={progressState} />}
+        {progressState < 99 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className=" absolute z-30 transform top-1/3 -translate-y-1/3 left-1/2 -translate-x-1/2 md:top-1/2 md:-translate-y-1/2 select-none"
+          >
+            <TestLoader progress={progressState} />
+          </motion.div>
+        )}
       </AnimatePresence>
       <div
         onClick={() => {
