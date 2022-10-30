@@ -8,6 +8,7 @@ import Metaverse from "../components/Metaverse";
 import MobileControllers from "../components/MobileControllers";
 import { customProgress } from "../utils/CustomProgressFunction";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface IProps {
   progress: number | undefined;
@@ -68,7 +69,12 @@ const Home: NextPage = (): any => {
   }
 
   return (
-    <div className=" superflex h-screen relative">
+    <div className=" superflex h-screen relative ">
+      <Link href={"/webgl"}>
+        <div className="absolute z-30 bg-white right-10 top-8 p-3 border rounded-md select-none cursor-pointer tr-500 text-black hover:text-white hover:bg-black">
+          WebGl
+        </div>
+      </Link>
       <AnimatePresence>
         {progressState < 99 && (
           <motion.div
