@@ -1,7 +1,9 @@
 import {
+  Backdrop,
   Environment,
   OrbitControls,
   Plane,
+  Sky,
   Sphere,
   useEnvironment,
 } from "@react-three/drei";
@@ -33,17 +35,23 @@ export default function webgl(): JSX.Element {
         </div>
       </Link>
       <div className="superflex h-full bg-white/10 w-full">
-        <Canvas
-        shadows
-          orthographic
-          camera={{ left: -5, right: 5, bottom: -5, top: 5, zoom: 150 }}
-        >
-          <directionalLight position={[0,2, 2]} castShadow />
+        <Canvas shadows>
+          {/* <Sky distance={450000} sunPosition={[0, 1, 0]} inclination={1} azimuth={0.95} /> */}
+          <directionalLight position={[0, 2, 2]} castShadow />
           <ambientLight intensity={0.3} />
           <Drei />
           <MapCube />
           <OrbitControls />
           <axesHelper args={[5]} />
+          <Backdrop
+            position={[0, 0, -2]}
+            receiveShadow
+            scale={[20, 5, 5]} // Stretches the floor segment, 0.25 by default
+            segments={20} // Mesh-resolution, 20 by default
+           
+          >
+            <meshStandardMaterial color="yellow" />
+          </Backdrop>
         </Canvas>
       </div>
     </div>
